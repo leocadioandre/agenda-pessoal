@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Adicione uma Tarefa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Título da Tarefa</ion-label>
+    <ion-input [(ngModel)]="taskTitle"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Descrição</ion-label>
+    <ion-textarea [(ngModel)]="taskDescription"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Data de Conclusão</ion-label>
+    <ion-select [(ngModel)]="dateDue" interface="popover">
+      <ion-select-option *ngFor="let date of availableDates" [value]="date">
+        {{ date | date: 'dd/MM/yyyy' }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addTask()">Adicionar</ion-button>
+  <ion-button expand="full" color="light" (click)="cancel()">Cancelar</ion-button>
+</ion-content>
